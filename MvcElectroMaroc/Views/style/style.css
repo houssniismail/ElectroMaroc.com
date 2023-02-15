@@ -1,0 +1,8 @@
+@media only screen and (max-width: 1200px){
+    .homedes{
+        display: flex;
+        flex-direction: column;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
