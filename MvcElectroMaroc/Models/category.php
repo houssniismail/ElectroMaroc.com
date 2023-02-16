@@ -20,6 +20,12 @@ class category{
        
        }
     }
+    static public function delete($data){
+        $stmt = DataBase::connect()->prepare('DELETE FROM `category` WHERE id =:id');
+        $stmt->bindParam(':id',$data['id']);
+        $stmt->execute();
+        
+    }
 }
 
 ?>

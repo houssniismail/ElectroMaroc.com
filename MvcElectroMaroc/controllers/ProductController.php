@@ -31,9 +31,7 @@ class ProductController{
                         die("error");
                     }     
             }
-        }
-
-        
+        }        
         if(isset($_POST['submit'])){
             $data=array(
                 'reference'=>$_POST['reference'],
@@ -51,7 +49,32 @@ class ProductController{
             session::set('success','produit ajouter');
             Redirect::to('ProductAdmin');
         }
+      }
+    static public function deleteproduit(){
+        if(isset($_POST['delete'])){
+            $data = array(
+                'id'=>$_POST['id'],
+            );
+            $result = Products::deleteProduct($data);
+            Redirect::to('ProductAdmin');
+        }
+    }
+    static public function updateProduct(){
+        if(isset($_POST['update'])){
+           $data = array(
+            'reference'=>$_POST['reference'],
+            'libelle'=>$_POST['libelle'],
+            'CodeBar'=>$_POST['CodeBar'],
+            'prixdAchat'=>$_POST['prixdAchat'],
+            'prixFinal'=>$_POST['prixFinal'],
+            'prixdOfer'=>$_POST['prixdOfer'],
+            'description'=>$_POST['description'],
+            'for_category'=>$_POST['for_category'],
+            'name'=>$_POST['name']
+           );
+        }
+        Products::updateProductModel($data);
     }
 }
-$result = ProductController::AddConProduc();
+
 ?>

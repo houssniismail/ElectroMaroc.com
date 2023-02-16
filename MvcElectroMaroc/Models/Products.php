@@ -31,10 +31,13 @@ class Products{
             echo 'errour';
         }
     }
-    static public function deleteProduct($idproduct){
-        $stmt = DataBase::connect()->prepare('DELETE FROM `products` WHERE id =:idproduct');
-        $stmt = bindParam(':idproduct',$idproduct);
+    static public function deleteProduct($data){
+        $stmt = DataBase::connect()->prepare('DELETE FROM `products` WHERE id =:id');
+        $stmt->bindParam(':id',$data['id']);
         $stmt->execute();
+    }
+    static public function updateProductModel(){
+        $stmt = DataBase::connect()->prepare('')
     }
    
 }

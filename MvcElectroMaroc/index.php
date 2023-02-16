@@ -4,6 +4,8 @@ require_once('./controllers/HomeController.php');
 
 $home = new HomeController();
 
+var_dump($_SESSION);
+
 $pages = ['index','add','delete','update','category','addCategory','Contact','index','ProductAdmin','products','pageAdmin','regester','login','dashboard','loginAdmin'];
 
 if(isset($_GET['page'])){
