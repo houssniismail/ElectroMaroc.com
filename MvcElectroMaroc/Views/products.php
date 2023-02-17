@@ -54,6 +54,7 @@ if(isset($_POST['logout'])){
   </section>
 </div>
 <!--end navbar -->
+<!-- <=====================================================================================> -->
 <div class="flex justify-center">
 <?php foreach($data as $elements):?>
 <div class="tuplats mx-8">
@@ -72,6 +73,7 @@ if(isset($_POST['logout'])){
 </div>
 <?php endforeach;?>
 </div>
+<!-- <=====================================================================================> -->
 <!-- footer -->
 <footer class="text-center mt-32  bg-gray-900 text-white">
     

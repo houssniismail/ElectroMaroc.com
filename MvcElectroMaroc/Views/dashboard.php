@@ -1,3 +1,9 @@
+<?php
+  $newLogin = AdminController::logincontroller();
+  if(!$_SESSION['emailAdmin']){
+    Redirect::to('loginAdmin');
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

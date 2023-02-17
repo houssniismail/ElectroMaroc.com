@@ -2,6 +2,12 @@
 if(isset($_POST['update'])){
     ProductController::updateProduct();
 }
+$newLogin = AdminController::logincontroller();
+if(!$_SESSION['emailAdmin']){
+  Redirect::to('loginAdmin');
+}
+$data = ProductController::AficherOneProduct();
+var_dump($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">

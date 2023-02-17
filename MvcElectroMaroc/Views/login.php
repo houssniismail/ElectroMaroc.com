@@ -93,8 +93,9 @@ Redirect::to('index');
         <div>
         <input class="block ml-auto mr-auto w-full mt-12 h-12 rounded" type="password" name="password" placeholder="password ...">
         </div>
-        <div class="w-full flex justify-start">
+        <div class="w-full flex justify-start items-center justify-between">
         <button name="login" class="block border w-[60px] mt-12 h-[40px]  bg-rose-800 rounded text-white">login</button>
+        <a href="./regester" class="text-gray-50 mt-[40px]">register</a>
         </div>
         
       </div>

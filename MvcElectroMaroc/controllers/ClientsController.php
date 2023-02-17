@@ -22,7 +22,7 @@ class ClientsController{
             );
             $result = Clients::addClientstodatabase($data);
             session::set('success','client ajouter');
-            Redirect::to('');
+            Redirect::to('login');
         }
     }
 }

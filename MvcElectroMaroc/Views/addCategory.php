@@ -2,6 +2,10 @@
 if(isset($_POST['submit'])){
     $category = categoryController::ajouterCategory();
 }
+$newLogin = AdminController::logincontroller();
+if(!$_SESSION['emailAdmin']){
+  Redirect::to('loginAdmin');
+}
 ?>
 
 <!DOCTYPE html>

@@ -7,6 +7,7 @@ class AdminController{
                 'passwordAdmin'=>$_POST['password']
             );
             $result = admin::loginAdmin($data);
+            $_SESSION['emailAdmin'];
         }
     }
 }

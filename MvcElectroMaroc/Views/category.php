@@ -3,7 +3,10 @@ $category = categoryController::getAllcategoryController();
 if(isset($_POST['delete'])){
 categoryController::deleteCategory();
 }
-
+$newLogin = AdminController::logincontroller();
+if(!$_SESSION['emailAdmin']){
+  Redirect::to('loginAdmin');
+}
 ?>
 
 <!DOCTYPE html>
@@ -19,13 +22,11 @@ categoryController::deleteCategory();
 <body>
 <div>
   <section>
-<nav class="flex justify-between bg-gray-900 text-white w-screen">
+     <nav class="flex justify-between bg-gray-900 text-white w-screen">
       <div class="px-5 xl:px-12 py-6 flex w-full items-center">
         <a class="text-3xl font-bold font-heading" href="#">
-          <!-- <img class="h-9" src="logo.png" alt="logo"> -->
           ELECTRO<span class="text-rose-800">MAROC</span>
         </a>
-        <!-- Nav Links -->
         <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12">
           <li><a class="hover:text-gray-200" href="./dashboard">dashpord</a></li>
           <li><a class="hover:text-gray-200" href="./add">add Product</a></li>
@@ -33,10 +34,7 @@ categoryController::deleteCategory();
           <li><a class="hover:text-gray-200" href="./category">show all category</a></li>
           <li><a class="hover:text-gray-200" href="./ProductAdmin">show all product</a></li>
         </ul>
-        <!-- Header Icons -->
       </div>
-      <!-- Responsive navbar -->
- 
       <a class="xl:hidden flex mr-6 items-center" >
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -53,19 +51,17 @@ categoryController::deleteCategory();
           </svg>
       </a>
     </nav>
-    
   </section>
 </div>
-    <!-- component -->
 <div class="overflow-x-auto rounded-lg border border-gray-200 shadow-md m-5">
   <table class="w-full border-collapse bg-white text-left text-sm text-gray-500">
     <thead class="bg-gray-900">
       <tr>
-        <th scope="col" class="px-6 py-4 font-medium text-gray-900 text-gray-50">Id</th>
-        <th scope="col" class="px-6 py-4 font-medium text-gray-900 text-gray-50">Name</th>
-        <th scope="col" class="px-6 py-4 font-medium text-gray-900 text-gray-50">Description</th>
-        <th scope="col" class="px-6 py-4 font-medium text-gray-900 text-gray-50">Image</th>
-        <th scope="col" class="px-6 py-4 font-medium text-gray-900 text-gray-50">Action</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-50 ">Id</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-50">Name</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-50">Description</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-50">Image</th>
+        <th scope="col" class="px-6 py-4 font-medium text-gray-50">Action</th>
       </tr>
     </thead>
     <tbody class="divide-y divide-gray-100 border-t border-gray-100">

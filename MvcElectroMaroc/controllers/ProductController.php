@@ -1,9 +1,16 @@
 <?php
 class ProductController{
+
+
+
      static public function getAllProduct(){
         $products = Products::getAll();
         return $products;
-    }
+     }
+
+
+
+
     static public function AddConProduc(){
         
       function addPic(){
@@ -50,6 +57,10 @@ class ProductController{
             Redirect::to('ProductAdmin');
         }
       }
+
+
+
+
     static public function deleteproduit(){
         if(isset($_POST['delete'])){
             $data = array(
@@ -59,6 +70,22 @@ class ProductController{
             Redirect::to('ProductAdmin');
         }
     }
+
+
+
+    static public function AficherOneProduct(){
+        if(isset($_POST['update'])){
+            $data = array(
+                'id'=>$_POST['id'],
+            );
+           $result = Products::getOneProduct($data);
+           
+            // Redirect::to('updateProduct');
+        }
+    }
+
+
+
     static public function updateProduct(){
         if(isset($_POST['update'])){
            $data = array(
@@ -75,6 +102,7 @@ class ProductController{
         }
         Products::updateProductModel($data);
     }
+
 }
 
 ?>

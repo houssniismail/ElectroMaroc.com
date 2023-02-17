@@ -10,6 +10,8 @@ class admin{
      if($result){
         $_SESSION['emailAdmin']=$data['emailAdmin'];
         Redirect::to('dashboard');
+     }else{
+        Redirect::to('loginAdmin');
      }
     }
 }
