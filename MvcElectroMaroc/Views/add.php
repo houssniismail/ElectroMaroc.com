@@ -4,7 +4,7 @@ if(isset($_POST['submit'])){
 }
 $newLogin = AdminController::logincontroller();
 if(!$_SESSION['emailAdmin']){
-  Redirect::to('loginAdmin');
+  Redirect::to('login');
 }
 ?>
 <!DOCTYPE html>

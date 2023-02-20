@@ -6,7 +6,7 @@ class ClientsController{
               'email'=>$_POST['email'],
               'password'=>$_POST['password']
             );
-            $result = Clients::loginClients($data);
+            return Clients::loginClients($data);    
         }
     }
     static public function registrerClients(){

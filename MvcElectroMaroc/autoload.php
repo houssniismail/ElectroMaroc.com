@@ -1,6 +1,12 @@
 <?php
 session_start();
 
+if(isset($_POST['logout'])){
+   session_destroy();
+   header("Location: http://localhost/MvcElectroMaroc/index"); 
+ }
+
+ 
 //autolaod:colpack function
 spl_autoload_register('autoload');
 

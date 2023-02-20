@@ -1,8 +1,15 @@
 <?php
-  $newLogin = AdminController::logincontroller();
-  if(!$_SESSION['emailAdmin']){
-    Redirect::to('login');
-  }
+$data = categoryController::oneCatigory();
+
+if(isset($_POST['update'])){
+  $result = categoryController::updateCategorycontroller();
+}
+
+$newLogin = AdminController::logincontroller();
+if(!$_SESSION['emailAdmin']){
+  Redirect::to('login');
+}
+// var_dump($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,12 +18,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>dashboardclient</title>
+    <title>add category</title>
 </head>
 <body>
 <div>
   <section>
-<nav class="flex justify-between bg-gray-900 text-white w-screen">
+<nav class="flex justify-between bg-gray-900 text-white w-screen w-[100vw]">
       <div class="px-5 xl:px-12 py-6 flex w-full items-center">
         <a class="text-3xl font-bold font-heading" href="#">
           <!-- <img class="h-9" src="logo.png" alt="logo"> -->
@@ -52,13 +59,27 @@
     
   </section>
 </div>
-    <div>
-               <div class="flex items-center">
-                  <ul class="flex items-center ml-auto mr-auto p-8">
-                    <li><a href="./ProductAdmin" class="border-solid border-2 p-8 top-12 border-indigo-600 rounded text-white bg-gray-900 p-8">show all products</a></li>
-                    <li><a href="./category" class="border-solid border-2 p-8 top-12 border-indigo-600 rounded text-white bg-gray-900 p-8">show all category</a></li>
-                  </ul>
-               </div>
+<?php foreach($data as $elements):?>
+    <form action="" method="POST" enctype="multipart/form-data">
+      <div class="border w-[30vw] py-[20px] ml-auto mr-auto mt-[200px] rounded bg-gray-200">
+        <div  class="text-center my-[10px]">
+        <h1>update category</h1>
+        </div>
+      <div class="grid justify-center ">
+        <div>
+        <input class="rounded w-[25vw] h-[30px]" type="text" name="nom" value="<?php echo $elements['nom']?>">
+           </div>
+              <div>
+              <input class="rounded w-[25vw] mt-[50px] h-[30px]"  type="text" name="description" value="<?php echo $elements['description']?>">
+              </div>
+           </div>
+        <div class="flex justify-center ml-auto mr-auto mt-[50px] w-[25vw]">
+        <input type="" name="id" value="<?php echo $elements['id']?>">
+      <button type="submit" name="update" class=" ml- auto mr-auto py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50">Save</button>
     </div>
+    </div>
+    </form>
+  <?php endforeach;?>  
+      <button class="py-2 px-4 bg-white border border-gray-200 text-gray-600 rounded hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50"><a href="./dashboard">Cancel</a></button>
 </body>
 </html>

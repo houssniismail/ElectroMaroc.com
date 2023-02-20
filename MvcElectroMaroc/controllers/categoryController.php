@@ -42,6 +42,8 @@ class categoryController{
             Redirect::to('category');
         }
     }
+
+
     static public function deleteCategory(){
         if(isset($_POST['delete'])){
             $data = array(
@@ -51,4 +53,29 @@ class categoryController{
             Redirect::to('category');
         }
     }
+    static public function oneCatigory(){
+        if(isset($_POST['afficher'])){
+            $data = array(
+                'id'=>$_POST['id'],
+            );
+           $result = category::afficherOneCategory($data); 
+
+           return $result;
+        }
+    }
+    
+
+
+    static public function updateCategorycontroller(){
+        if(isset($_POST['update'])){
+            $data = array(
+                'nom'=>$_POST['nom'],
+                'description'=>$_POST['description'],
+                'id'=>$_POST['id']
+            );
+            category::updatecategoryModel($data);
+            Redirect::to('category');
+        }
+    }
+
 }

@@ -74,13 +74,12 @@ class ProductController{
 
 
     static public function AficherOneProduct(){
-        if(isset($_POST['update'])){
+        if(isset($_POST['AFICHER'])){
             $data = array(
                 'id'=>$_POST['id'],
             );
-           $result = Products::getOneProduct($data);
-           
-            // Redirect::to('updateProduct');
+            $result = Products::getOneProduct($data);
+            return $result;
         }
     }
 
@@ -97,10 +96,13 @@ class ProductController{
             'prixdOfer'=>$_POST['prixdOfer'],
             'description'=>$_POST['description'],
             'for_category'=>$_POST['for_category'],
-            'name'=>$_POST['name']
+            'name'=>$_POST['name'],
+            'id'=>$_POST['id']
            );
+           Products::updateProductModel($data);
+           Redirect::to('ProductAdmin');
         }
-        Products::updateProductModel($data);
+
     }
 
 }

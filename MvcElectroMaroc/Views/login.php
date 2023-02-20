@@ -1,9 +1,9 @@
 <?php
 if(isset($_POST['login'])){
-    $newLogin = ClientsController::loginClient();
+     $newLogin = ClientsController::loginClient();
 }
 if(!empty($_SESSION['email'])){
-Redirect::to('index');
+Redirect::to('products');
 }
 ?>
 
@@ -85,7 +85,7 @@ Redirect::to('index');
   </section>
 </div>
     <!-- component -->
-     <form method="POST">
+     <form method="POST" action="./accounts">
       <div class="flex-col w-[30vw] ml-auto mr-auto border bg-gray-900 rounded mt-36 p-8">
         <div >
         <input class="block ml-auto mr-auto w-full mt-12 h-12 rounded" type="text" name="email" placeholder="email ...">

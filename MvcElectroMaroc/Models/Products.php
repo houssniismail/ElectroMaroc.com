@@ -58,19 +58,16 @@ class Products{
         $stmt = DataBase::connect()->prepare('UPDATE `products` SET `reference`=:reference,`libelle`=:libelle,`codeBar`=:codeBar,`prix_achat`=:prix_achat,`prix_final`=:prix_final,`prix_ofer`=:prix_ofer,`description`=:description,`category`=:category,`name`=:name WHERE id=:id_product');
         $stmt->bindParam(':reference',$data['reference']);
         $stmt->bindParam(':libelle',$data['libelle']);
-        $stmt->bindParam(':codeBar',$data['codeBar']);
-        $stmt->bindParam(':prix_achat',$data['prix_achat']);
-        $stmt->bindParam(':prix_final',$data['prix_final']);
-        $stmt->bindParam(':prix_ofer',$data['prix_ofer']);
+        $stmt->bindParam(':codeBar',$data['CodeBar']);
+        $stmt->bindParam(':prix_achat',$data['prixdAchat']);
+        $stmt->bindParam(':prix_final',$data['prixFinal']);
+        $stmt->bindParam(':prix_ofer',$data['prixdOfer']);
         $stmt->bindParam(':description',$data['description']);
-        $stmt->bindParam(':category',$data['category']);
+        $stmt->bindParam(':category',$data['for_category']);
         $stmt->bindParam(':name',$data['name']);
-        $stmt->bindParam(':id_product',$data['id_product']);
+        $stmt->bindParam(':id_product',$data['id']);
         $stmt->execute();
-    }
-
-    
-    
-        
+        var_dump($data);
+    }        
 }
 ?>

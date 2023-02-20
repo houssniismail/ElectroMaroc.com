@@ -6,14 +6,11 @@ if(isset($_POST['delete'])){
 }
 $newLogin = AdminController::logincontroller();
 if(!$_SESSION['emailAdmin']){
-  Redirect::to('loginAdmin');
+  Redirect::to('login');
 }
 
 
-if(isset($_POST['update'])){
-  $result = ProductController::AficherOneProduct();
-  var_dump($result);
-}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,8 +23,8 @@ if(isset($_POST['update'])){
 </head>
 <body>
 <div>
-  <section>
-<nav class="flex justify-between bg-gray-900 text-white w-screen">
+ <section>
+  <nav class="flex justify-between bg-gray-900 text-white w-screen">
       <div class="px-5 xl:px-12 py-6 flex w-full items-center">
         <a class="text-3xl font-bold font-heading" href="#">
           <!-- <img class="h-9" src="logo.png" alt="logo"> -->
@@ -60,14 +57,13 @@ if(isset($_POST['update'])){
           </svg>
       </a>
     </nav>
-    
   </section>
 </div>
 <div class="mt-8 ml-8">
 <a href="http://localhost/MvcElectroMaroc/add" class="mt-8 relativ px-6 py-3 text-blue-100 no-underline bg-blue-500 rounded hover:bg-blue-600 hover:underline hover:text-blue-200">Add</a>
 </div>
 <div class="flex flex-col">
-  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 w-[100%]" style="margin-left: auto; margin-right: auto;">
     <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
       <div class="overflow-hidden">
         <table class="min-w-full text-center">
@@ -150,7 +146,7 @@ if(isset($_POST['update'])){
               <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
                <div class="flex justify-end gap-4">
               <form action="" method="POST">
-              <input type="text" name="id" value="<?php  echo $ele['id'];?>">
+              <input type="hidden" name="id" value="<?php  echo $ele['id'];?>">
               <button type="submit" name="delete">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -170,9 +166,9 @@ if(isset($_POST['update'])){
        
               </button>
             </form>
-            <form method="POST">
-              <input type="text" name="id" value="<?php  echo $ele['id'];?>">
-             <button type="submit" name="update">
+            <form action="./updateProduct" method="POST">
+              <input type="hidden" name="id" value="<?php echo $ele['id'];?>">
+             <button type="submit" name="AFICHER">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"

@@ -10,12 +10,14 @@ class Clients{
       $stmt->bindParam(':email', $data['email']);
       $stmt->bindParam(':password',$data['password']);
       $stmt->execute();
-      $result = $stmt->fetchAll();
+      $result =  $stmt->fetchAll();
       if($result){
          $_SESSION['email']=$data['email'];
-            }else{
+         return $result;
+      }else{
          echo "this info not correct";
       }
+      
     }
     static public function addClientstodatabase($data){
         $stmt = DataBase::connect()->prepare('INSERT INTO `client`( `nom`, `prenom`, `num_phon`, `adriss`, `ville`, `email`, `password_client`)

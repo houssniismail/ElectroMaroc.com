@@ -4,9 +4,7 @@ require_once('./controllers/HomeController.php');
 
 $home = new HomeController();
 
-
-
-$pages = ['index','add','delete','update','category','addCategory','Contact','index','ProductAdmin','products','pageAdmin','regester','login','dashboard','loginAdmin','commend','updateProduct'];
+$pages = ['add','addCategory','category','commend','Contact','dashboard','index','login','loginAdmin','ProductAdmin','products','regester','updatCategory','updateProduct','accounts'];
 
 if(isset($_GET['page'])){
     if(in_array($_GET['page'],$pages)){

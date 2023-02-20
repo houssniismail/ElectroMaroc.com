@@ -1,14 +1,25 @@
 <?php
 
-if(isset($_POST['show_your_commend'])){
-    $data = CommendComtroller::getAllCommendDeclient();
-    var_dump($data);
-}
 if(!$_SESSION['email']){
   Redirect::to('login');
 }
-?>
 
+$client = ClientsController::loginClient();
+if($client == NULL){
+  }else{
+    foreach($client as $ele){
+      $_SESSION['Id']=$ele['Id'];
+      $_SESSION['nom']=$ele['nom'];
+      $_SESSION['prenom']=$ele['prenom'];
+    }
+  }
+  if(isset($_POST['show_your_commend'])){
+    $data = CommendComtroller::getAllCommendDeclient();
+    // var_dump($data);
+    Redirect::to('commend');
+  }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +28,7 @@ if(!$_SESSION['email']){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <title>your Commend</title>
+    <title>Carte de produits</title>
 </head>
 <body>
 <div class="flex flex-wrap h-screen" style="height: 87px;">
@@ -78,48 +89,7 @@ if(!$_SESSION['email']){
   </section>
 </div>
 
-<div class="mt-8 ml-8">
-<a href="http://localhost/MvcElectroMaroc/add" class="mt-8 relativ px-6 py-3 text-blue-100 no-underline bg-blue-500 rounded hover:bg-blue-600 hover:underline hover:text-blue-200">Add</a>
-</div>
-<div class="flex flex-col">
-  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8 w-[100%]" style="margin-left: auto; margin-right: auto;">
-    <div class="py-4 inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="overflow-hidden">
-        <table class="min-w-full text-center">
-          <thead class="border-b bg-gray-800">
-            <tr>
-            <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-              date de creation
-              </th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-                quentite
-              </th>
-              <th scope="col" class="text-sm font-medium text-white px-6 py-4">
-              prix
-              </th>
 
-            </tr>
-          </thead class="border-b">
-          <tbody>
-            <?php foreach($data as $ele):?>
-            <tr class="bg-white border-b">
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              <?php echo $ele['date_creation'];?> 
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              <?php echo $ele['quentity'];?> 
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              <?php echo $ele['prix_de_command'];?> 
-              </td>
-
-            </tr class="bg-white border-b">
-            <?php endforeach;?>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
 </div>
 </body>
 </html>
